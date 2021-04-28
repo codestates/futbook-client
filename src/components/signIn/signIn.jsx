@@ -13,7 +13,6 @@ const SignIn = props => {
   const handleMoveSignup = () => {
     history.push("/signup");
   };
-  console.log(userInfo);
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
