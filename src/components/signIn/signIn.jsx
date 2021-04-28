@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import styles from "./signIn.module.css";
 
 const SignIn = props => {
+  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const history = useHistory();
+
+  const handleUserInfo = key => event => {
+    setUserInfo(preState => ({ ...preState, [key]: event.target.value }));
+  };
+
   const handleMoveSignup = () => {
     history.push("/signup");
   };
+  console.log(userInfo);
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -16,13 +23,15 @@ const SignIn = props => {
       <div className={styles.userInfo}>
         <input
           placeholder="e-mail을 입력하세요."
-          type="text"
+          type="email"
           className={styles.userInfo_ID}
+          onChange={handleUserInfo("email")}
         />
         <input
           placeholder="비밀번호를 입력하세요."
           type="password"
           className={styles.userInfo_PW}
+          onChange={handleUserInfo("password")}
         />
       </div>
       <button>로그인</button>
