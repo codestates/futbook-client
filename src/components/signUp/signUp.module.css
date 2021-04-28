@@ -1,0 +1,73 @@
+.container {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.reserve_text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: darkslategray;
+  margin-bottom: 1.5rem;
+}
+
+.logo_img {
+  height: 3rem;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  height: 2.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+}
+
+input::placeholder {
+  font-size: 1.2rem;
+}
+
+.errorMsg {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: red;
+  font-weight: bold;
+}
+
+button {
+  height: 2.5em;
+  font-size: 1.2rem;
+  border-radius: 1.2rem;
+  margin-bottom: 1.5rem;
+  border: 0.1rem solid darkslategray;
+  box-shadow: 0.1rem 0.1rem 0.1rem darkslategray;
+  background-color: transparent;
+  outline: none;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+button:hover {
+  background-color: darkslategray;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+button:active {
+  transform: translate(2px, 2px);
+}
