@@ -1,7 +1,9 @@
-import styles from "./app.module.css";
+import React from "react";
+import "./app.css";
 import EnterPage from "./pages/enterPage/enterPage";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MainPage from "./pages/mainPage/mainPage";
+import SignUp from "./pages/signUp/signUp";
 function App() {
   return (
     <Router>
@@ -9,7 +11,12 @@ function App() {
         <Route exact path="/">
           <EnterPage />
         </Route>
-        <Route exact path=""></Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+        <Route path="/main">
+          <MainPage />
+        </Route>
       </Switch>
     </Router>
   );
