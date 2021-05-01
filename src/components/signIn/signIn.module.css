@@ -24,7 +24,7 @@
   flex-direction: column;
 }
 
-.userInfo > input {
+.userInfo > .input_signin {
   height: 2.5rem;
   font-size: 1.5rem;
 }
@@ -47,7 +47,7 @@
   font-size: 1.2rem;
 }
 
-button {
+.btn_signin {
   height: 2.5em;
   font-size: 1.2rem;
   border-radius: 1.2rem;
@@ -59,12 +59,12 @@ button {
   transition: background-color 0.5s, color 0.5s;
 }
 
-button:hover {
+.btn_signin:hover {
   background-color: darkslategray;
   color: whitesmoke;
   font-weight: bold;
 }
 
-button:active {
+.btn_signin:active {
   transform: translate(2px, 2px);
 }

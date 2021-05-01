@@ -1,27 +1,23 @@
-:root {
-  --primary: #fff;
-}
-
 .btn {
   padding: 8px 20px;
   border-radius: 2px;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
   outline: none;
   border: none;
   cursor: pointer;
 }
 
 .one {
-  background-color: var(--primary);
+  background-color: #fff;
   color: #242424;
-  border: 1px solid var(--primary);
+  border: 1px solid #fff;
 }
 
 .two {
   background-color: transparent;
   color: #fff;
   padding: 5px 20px;
-  border: 1px solid var(--primary);
+  border: 1px solid #fff;
   transition: all 0.3s ease-out;
 }
 
