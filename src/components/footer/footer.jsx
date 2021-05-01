@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./footer.module.css";
 import { Link } from "react-router-dom";
 
-function Footer() {
+const Footer = () => {
   return (
     <div className={styles.container}>
       <section className={styles.social_media}>
@@ -54,6 +54,6 @@ function Footer() {
       </section>
     </div>
   );
-}
+};
 
 export default Footer;
