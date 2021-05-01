@@ -48,11 +48,16 @@ video {
 
   .container > p {
     margin-top: 1rem;
-    color: #fff;
-    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container > h1 {
+    font-size: 2.7rem;
+    margin-top: -7rem;
   }
 
-  .btn {
-    width: 100%;
+  .container > p {
+    margin-top: 1rem;
   }
 }

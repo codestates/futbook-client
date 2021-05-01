@@ -20,6 +20,14 @@ function Navbar() {
     }
   };
 
+  const scrollToStadium = () => {
+    setClick(false);
+    window.scroll({
+      top: 1000,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     showButton();
   }, []);
@@ -29,7 +37,7 @@ function Navbar() {
   return (
     <>
       <div className={styles.container}>
-        <Link to="/" className={styles.logo} onClick={closeMobileMenu}>
+        <Link to="/main" className={styles.logo} onClick={closeMobileMenu}>
           <i className={`fas fa-futbol ${styles.fa_futbol}`} />
           FUTBOOK
         </Link>
@@ -48,31 +56,23 @@ function Navbar() {
           }
         >
           <li className={styles.item}>
-            <Link to="/" className={styles.link} onClick={closeMobileMenu}>
+            <div className={styles.link} onClick={scrollToStadium}>
               등록시설
-            </Link>
+            </div>
           </li>
           <li className={styles.item}>
-            <Link
-              to="/services"
-              className={styles.link}
-              onClick={closeMobileMenu}
-            >
+            <Link to="/main" className={styles.link} onClick={closeMobileMenu}>
               예약하기
             </Link>
           </li>
           <li className={styles.item}>
-            <Link
-              to="/products"
-              className={styles.link}
-              onClick={closeMobileMenu}
-            >
+            <Link to="/main" className={styles.link} onClick={closeMobileMenu}>
               예약확인
             </Link>
           </li>
           <li>
             <Link
-              to="/"
+              to="/main"
               className={styles.link_mobile}
               onClick={closeMobileMenu}
             >
