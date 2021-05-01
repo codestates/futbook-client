@@ -4,7 +4,8 @@ import EnterPage from "./pages/enterPage/enterPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MainPage from "./pages/mainPage/mainPage";
 import SignUp from "./pages/signUp/signUp";
-function App() {
+import ListPage from "./pages/listPage/listPage";
+const App = () => {
   return (
     <Router>
       <Switch>
@@ -17,9 +18,12 @@ function App() {
         <Route path="/main">
           <MainPage />
         </Route>
+        <Route path="/list">
+          <ListPage />
+        </Route>
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
