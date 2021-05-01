@@ -1,8 +1,6 @@
 import React from "react";
 import SignIn from "../../components/signIn/signIn";
 import styles from "./enterPage.module.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import SignUp from "../../components/signUp/signUp";
 
 const EnterPage = () => {
   return (
@@ -15,14 +13,7 @@ const EnterPage = () => {
         />
       </div>
       <div className={styles.rightbox}>
-        <Router>
-          <Route exact path="/">
-            <SignIn />
-          </Route>
-          <Route exact path="/signup">
-            <SignUp />
-          </Route>
-        </Router>
+        <SignIn />
       </div>
     </div>
   );

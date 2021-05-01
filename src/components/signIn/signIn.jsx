@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import styles from "./signIn.module.css";
 
-const SignIn = props => {
+const SignIn = (props) => {
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const history = useHistory();
 
-  const handleUserInfo = key => event => {
-    setUserInfo(preState => ({ ...preState, [key]: event.target.value }));
+  const handleUserInfo = (key) => (event) => {
+    setUserInfo((preState) => ({ ...preState, [key]: event.target.value }));
   };
 
   const handleMoveSignup = () => {
     history.push("/signup");
+  };
+  const handleMoveMain = () => {
+    history.push("/main");
   };
   return (
     <div className={styles.container}>
@@ -36,7 +39,7 @@ const SignIn = props => {
       <button>로그인</button>
       <button>구글 로그인</button>
       <button onClick={handleMoveSignup}>회원가입</button>
-      <button>게스트 입장</button>
+      <button onClick={handleMoveMain}>게스트 입장</button>
     </div>
   );
 };
