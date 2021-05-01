@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./button.module.css";
 
-const Button = ({ children, type, onClick, buttonStyle, buttonSize }) => {
+const Button = ({ path, children, type, onClick, buttonStyle, buttonSize }) => {
   const getButtonStyle = (buttonStyle) => {
     switch (buttonStyle) {
       case "one":
@@ -29,7 +29,7 @@ const Button = ({ children, type, onClick, buttonStyle, buttonSize }) => {
   };
 
   return (
-    <Link to="/">
+    <Link to={path}>
       <button
         className={`${styles.btn} ${getButtonStyle(
           buttonStyle

@@ -72,7 +72,7 @@ function Navbar() {
           </li>
           <li>
             <Link
-              to="/main"
+              to="/"
               className={styles.link_mobile}
               onClick={closeMobileMenu}
             >
@@ -82,7 +82,9 @@ function Navbar() {
         </ul>
         {button && (
           <div className={styles.login}>
-            <Button buttonStyle="two">로그인</Button>
+            <Button buttonStyle="two" path="/">
+              로그인
+            </Button>
           </div>
         )}
       </div>
