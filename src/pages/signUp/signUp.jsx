@@ -66,26 +66,26 @@ const SignUp = (props) => {
               alt="logo"
               className={styles.logo_img}
             />
-            <div className={styles.logo_name}>BOOKING!</div>
+            <div className={styles.logo_name}>FUTBOOK</div>
           </div>
           <div className={styles.reserve_text}>회원가입</div>
           <div className={styles.userInfo}>
             <input
               placeholder="가입하실 email주소를 입력해주세요"
               type="email"
-              className={styles.userInfo_ID}
+              className={`${styles.userInfo_ID} ${styles.input_signup}`}
               onChange={handleEnrollUserInfo("email")}
             />
             <input
               placeholder="비밀번호를 입력해 주세요."
               type="password"
-              className={styles.userInfo_PW}
+              className={`${styles.userInfo_PW} ${styles.input_signup}`}
               onChange={handleEnrollUserInfo("password")}
             />
             <input
               placeholder="비밀번호를 재입력해 주세요."
               type="password"
-              className={styles.userInfo_RePW}
+              className={`${styles.userInfo_RePW} ${styles.input_signup}`}
               onChange={handleEnrollUserInfo("rePassword")}
             />
           </div>
@@ -93,13 +93,16 @@ const SignUp = (props) => {
             <div className={styles.errorMsg}>{enrollUserInfo.errorMsg}</div>
           ) : null}
           <button
+            className={styles.btn_signup}
             onClick={() => {
               handleEnroll(enrollUserInfo);
             }}
           >
             회원가입
           </button>
-          <button onClick={handleMoveSignIn}>로그인하러 돌아가기</button>
+          <button className={styles.btn_signup} onClick={handleMoveSignIn}>
+            로그인하러 돌아가기
+          </button>
         </div>
       </div>
     </div>
