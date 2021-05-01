@@ -3,7 +3,7 @@ import Button from "../button/button";
 import { Link } from "react-router-dom";
 import styles from "./navbar.module.css";
 
-function Navbar() {
+const Navbar = ({ link }) => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -23,7 +23,7 @@ function Navbar() {
   const scrollToStadium = () => {
     setClick(false);
     window.scroll({
-      top: 1000,
+      top: 990,
       behavior: "smooth",
     });
   };
@@ -55,13 +55,15 @@ function Navbar() {
             click ? `${styles.menu} ${styles.active}` : `${styles.menu}`
           }
         >
+          {link === "listPage" ? null : (
+            <li className={styles.item}>
+              <div className={styles.link} onClick={scrollToStadium}>
+                등록시설
+              </div>
+            </li>
+          )}
           <li className={styles.item}>
-            <div className={styles.link} onClick={scrollToStadium}>
-              등록시설
-            </div>
-          </li>
-          <li className={styles.item}>
-            <Link to="/main" className={styles.link} onClick={closeMobileMenu}>
+            <Link to="/list" className={styles.link} onClick={closeMobileMenu}>
               예약하기
             </Link>
           </li>
@@ -90,6 +92,6 @@ function Navbar() {
       </div>
     </>
   );
-}
+};
 
 export default Navbar;
