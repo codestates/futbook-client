@@ -1,0 +1,81 @@
+.container {
+  background-color: #242424;
+  padding: 0.5rem 0 1rem 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.social_media {
+  max-width: 80rem;
+  width: 95%;
+}
+
+.social_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 2.5rem 0 0 0;
+}
+
+.social_link {
+  color: #fff;
+  font-size: 24px;
+}
+
+.social_logo {
+  color: #fff;
+  margin-left: 1.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.fa_futbol {
+  font-size: 1.8rem;
+  margin-right: 0.2rem;
+}
+
+.social_icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 15rem;
+  margin-bottom: 0.9rem;
+}
+
+.web_represent {
+  color: #fff;
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 53rem) {
+  .container {
+    height: 14rem;
+  }
+
+  .social_wrap {
+    flex-direction: column;
+    margin-left: -0.7rem;
+  }
+  .social_logo {
+    margin-top: -1.5rem;
+    margin-left: 21px;
+  }
+
+  .web_represent {
+    margin-top: 0.2rem;
+    margin-left: 1.5rem;
+  }
+
+  .social_icons {
+    margin-top: 1rem;
+    margin-left: 1.3rem;
+  }
+}
