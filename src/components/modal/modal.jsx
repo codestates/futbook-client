@@ -40,9 +40,9 @@ export const Modal = ({ showModal, setShowModal }) => {
           <animated.div style={animation}>
             <div className={styles.wrap}>
               <div>
-                <h1>Are you ready?</h1>
-                <p>Get exclusive access to our next launch.</p>
-                <button>Join Now</button>
+                <h1></h1>
+                <p></p>
+                <button></button>
                 <div onClick={() => setShowModal((prev) => !prev)}>
                   <i className="fas fa-times"></i>
                 </div>
