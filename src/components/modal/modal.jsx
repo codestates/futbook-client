@@ -54,3 +54,5 @@ export const Modal = ({ showModal, setShowModal }) => {
     </>
   );
 };
+
+export default Modal;
