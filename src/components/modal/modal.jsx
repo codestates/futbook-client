@@ -10,7 +10,7 @@ export const Modal = ({ showModal, setShowModal }) => {
       duration: 300,
     },
     opacity: showModal ? 1 : 0,
-    transform: showModal ? `translateY(4%)` : `translateY(-100%)`,
+    transform: showModal ? `translateY(6%)` : `translateY(-100%)`,
   });
 
   const closeModal = (e) => {

@@ -19,7 +19,21 @@
   /* z-index: 10; */
 }
 
-@media screen and (min-width: 100rem) {
+@media screen and (max-width: 765px) {
+  .wrap {
+    width: 500px;
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .wrap {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
   .wrap {
     width: 1000px;
     height: 600px;
