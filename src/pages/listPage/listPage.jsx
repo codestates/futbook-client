@@ -15,7 +15,7 @@ function ListPage() {
       <Navbar link="listPage" />
       <div>
         <div className={styles.title}>
-          <h1>예약 가능한 풋살장</h1>
+          <h1>풋살장 예약하기</h1>
         </div>
         <ListItem
           img="/images/inside_football1.jpeg"
