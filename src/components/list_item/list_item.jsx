@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./list_item.module.css";
 
-const ListItem = ({ img, date, title, address, label, price }) => {
+const ListItem = ({ openModal, img, date, title, address, label, price }) => {
   return (
-    <div className={styles.item}>
+    <div className={styles.item} onClick={openModal}>
       <img className={styles.image} src={img} alt="stadium" />
       <div className={styles.info}>
         <div className={styles.info_top}>

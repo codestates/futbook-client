@@ -1,10 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./listPage.module.css";
 import ListItem from "../../components/list_item/list_item";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
-
+import Modal from "../../components/modal/modal";
 function ListPage() {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prev) => !prev);
+  };
+
   useEffect(() => {
     window.scroll({
       top: 0,
@@ -12,12 +18,14 @@ function ListPage() {
   }, []);
   return (
     <>
+      <Modal showModal={showModal} setShowModal={setShowModal}></Modal>
       <Navbar link="listPage" />
       <div>
         <div className={styles.title}>
           <h1>풋살장 예약하기</h1>
         </div>
         <ListItem
+          openModal={openModal}
           img="/images/inside_football1.jpeg"
           date="2021/05/01"
           title="가 풋살장"
@@ -27,6 +35,7 @@ function ListPage() {
         />
 
         <ListItem
+          openModal={openModal}
           img="/images/inside_football2.jpeg"
           date="2021/05/01"
           title="나 풋살장"
@@ -36,6 +45,7 @@ function ListPage() {
         />
 
         <ListItem
+          openModal={openModal}
           img="/images/outside_football1.jpeg"
           date="2021/05/01"
           title="다 풋살장"
@@ -44,6 +54,7 @@ function ListPage() {
           price="13,0000원"
         />
         <ListItem
+          openModal={openModal}
           img="/images/outside_football2.jpeg"
           date="2021/05/01"
           title="라 풋살장"
@@ -52,6 +63,7 @@ function ListPage() {
           price="14,0000원"
         />
         <ListItem
+          openModal={openModal}
           img="/images/outside_football3.jpeg"
           date="2021/05/01"
           title="마 풋살장"

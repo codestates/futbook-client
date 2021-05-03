@@ -10,25 +10,24 @@
 }
 
 .wrap {
-  width: 800px;
-  height: 520px;
+  width: 420px;
+  height: 650px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
   border-radius: 10px;
   /* z-index: 10; */
 }
-
-@media screen and (max-width: 765px) {
+@media screen and (min-width: 640px) {
   .wrap {
-    width: 500px;
-    height: 600px;
+    width: 550px;
+    height: 650px;
   }
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (min-width: 860px) {
   .wrap {
-    width: 600px;
+    width: 800px;
     height: 600px;
   }
 }
