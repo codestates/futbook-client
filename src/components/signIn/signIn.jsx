@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import styles from "./signIn.module.css";
-import { fetchData, pullData, signIn } from "../../actions";
-import { useSpringRef } from "@react-spring/core";
+import { signIn } from "../../actions";
 
 const URL = process.env.REACT_APP_SERVER_URL;
 const SignIn = props => {
