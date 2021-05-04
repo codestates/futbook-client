@@ -28,10 +28,10 @@ export const signOut = () => {
 };
 
 // action creator: user
-export const getUserInfo = () => {
+export const getUserInfo = userData => {
   return {
     type: GET_USER_INFO,
-    payload: {},
+    payload: userData,
   };
 };
 
