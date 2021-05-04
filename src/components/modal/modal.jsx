@@ -12,7 +12,7 @@ export const Modal = ({ showModal, setShowModal }) => {
       duration: 300,
     },
     opacity: showModal ? 1 : 0,
-    transform: showModal ? `translateY(6%)` : `translateY(-100%)`,
+    transform: showModal ? `translateY(5%)` : `translateY(-100%)`,
   });
 
   const closeModal = (e) => {
@@ -74,7 +74,12 @@ export const Modal = ({ showModal, setShowModal }) => {
                   label="요청사항"
                   placeholder="요청사항이 있으시다면 적어주세요."
                 />
-                <button className={styles.btn_booking}>예약하기</button>
+                <button
+                  className={styles.btn_booking}
+                  onClick={() => setShowModal((prev) => !prev)}
+                >
+                  예약하기
+                </button>
               </div>
               <div
                 className={styles.close}
