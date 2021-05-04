@@ -5,9 +5,7 @@ export const SIGN_OUT = "SIGN_OUT";
 //user part
 export const GET_USER_INFO = "GET_USER_INFO";
 // booking part
-export const BOOK_FUTSAL = "BOOK_FUTSAL";
 export const CHECK_BOOK = "CHECK_BOOK";
-export const CANCEL_BOOK = "CANCEL_BOOK";
 // futsal part
 export const GET_ALLFUTSAL_INFO = "GET_ALLFUTSAL_INFO";
 
@@ -36,24 +34,11 @@ export const getUserInfo = userData => {
 };
 
 //action creator: booking
-export const bookFutsal = () => {
-  return {
-    type: BOOK_FUTSAL,
-    payload: {},
-  };
-};
-
-export const checkBook = () => {
+export const checkBook = bookingDatas => {
+  console.log(bookingDatas);
   return {
     type: CHECK_BOOK,
-    payload: {},
-  };
-};
-
-export const cancelBook = () => {
-  return {
-    type: CANCEL_BOOK,
-    payload: {},
+    payload: bookingDatas,
   };
 };
 
