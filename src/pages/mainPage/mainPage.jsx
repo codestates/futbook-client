@@ -7,7 +7,6 @@ import Footer from "../../components/footer/footer";
 import { useLocation } from "react-router";
 const MainPage = (props) => {
   const location = useLocation();
-  console.log(location);
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
     setShowModal((prev) => !prev);
