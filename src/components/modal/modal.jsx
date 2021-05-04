@@ -2,11 +2,20 @@ import React, { useRef, useEffect, useCallback, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import { DatePicker, Textarea } from "react-rainbow-components";
 import styles from "./modal.module.css";
-import Button from "../button/button";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
-export const Modal = ({ showModal, setShowModal }) => {
+const URL = process.env.REACT_APP_SERVER_URL;
+export const Modal = ({
+  showModal,
+  setShowModal,
+  modalInfo,
+  makeDateFormat,
+}) => {
+  const signState = useSelector(state => state.signReducer);
+  const [datePicked, setDatePicked] = useState(new Date());
+  const [bookErrMsg, setbookErrMsg] = useState(null);
   const backRef = useRef();
-
   const animation = useSpring({
     config: {
       duration: 300,
@@ -15,14 +24,14 @@ export const Modal = ({ showModal, setShowModal }) => {
     transform: showModal ? `translateY(5%)` : `translateY(-100%)`,
   });
 
-  const closeModal = (e) => {
+  const closeModal = e => {
     if (backRef.current === e.target) {
       setShowModal(false);
     }
   };
 
   const keyPress = useCallback(
-    (e) => {
+    e => {
       if (showModal && e.key === "Escape") {
         setShowModal(false);
       }
@@ -35,7 +44,19 @@ export const Modal = ({ showModal, setShowModal }) => {
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
 
-  const [datePicked, setDatePicked] = useState(new Date());
+  const handleBookingBtn = async () => {
+    try {
+      const day = makeDateFormat(datePicked);
+      const accessToken = signState.sign.accessToken;
+      await axios.post(
+        `${URL}/booking/bookfutsal`,
+        { futsal_Id: modalInfo.id, bookingDate: day },
+        { headers: { authorization: `Bearer ${accessToken}` } }
+      );
+    } catch (err) {
+      setbookErrMsg("해당 날짜는 이미 예약이 완료된 날짜입니다.");
+    }
+  };
 
   return (
     <>
@@ -46,27 +67,27 @@ export const Modal = ({ showModal, setShowModal }) => {
               <div className={styles.left}>
                 <img
                   className={styles.pic}
-                  src="/images/outside_football2.jpeg"
+                  src={modalInfo.thumnail}
                   alt="futsal"
                 ></img>
                 <p className={styles.title}>
-                  서울특별시 강남구 가 코드로 1길 가 풋살장
+                  {`${modalInfo.location} ${modalInfo.name}`}
                 </p>
-                <p className={styles.price}>15,0000원</p>
+                <p className={styles.price}>{`${modalInfo.fee}`}</p>
               </div>
               <div className={styles.right}>
                 <DatePicker
                   className={styles.datepick}
                   minDate={new Date()}
-                  maxDate={new Date(2021, 4, 22)}
+                  maxDate={new Date(2022, 1, 1)}
                   required
                   formatStyle="large"
                   placeholder="날짜를 선택해 주세요."
                   value={datePicked}
                   label="예약가능한 날짜"
-                  onChange={(value) => setDatePicked(value)}
+                  onChange={value => setDatePicked(value)}
                 />
-                {console.log(datePicked)}
+
                 <Textarea
                   className={styles.textarea}
                   style={styles.input}
@@ -76,14 +97,17 @@ export const Modal = ({ showModal, setShowModal }) => {
                 />
                 <button
                   className={styles.btn_booking}
-                  onClick={() => setShowModal((prev) => !prev)}
+                  onClick={() => {
+                    setShowModal(prev => !prev);
+                    handleBookingBtn();
+                  }}
                 >
                   예약하기
                 </button>
               </div>
               <div
                 className={styles.close}
-                onClick={() => setShowModal((prev) => !prev)}
+                onClick={() => setShowModal(prev => !prev)}
               >
                 <i className="fas fa-times"></i>
               </div>

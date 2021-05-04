@@ -7,9 +7,9 @@ import Footer from "../../components/footer/footer";
 import Modal from "../../components/modal/modal";
 const ListPage = () => {
   const futsalState = useSelector(state => state.futsalReducer);
-
+  const tokenState = useSelector(state => state.signReducer);
   const [showModal, setShowModal] = useState(false);
-
+  const [modalInfo, setModalInfo] = useState(null);
   const [futsalDatas, setFutsalDatas] = useState(futsalState.futsalData);
 
   const openModal = () => {
@@ -21,7 +21,7 @@ const ListPage = () => {
     return `${price}원`;
   };
 
-  const makeDateFormat = () => {
+  const makeDateFormat = day => {
     const aux = num => {
       if (num < 10) {
         return "0" + String(num);
@@ -30,7 +30,7 @@ const ListPage = () => {
       }
     };
 
-    const today = new Date();
+    const today = day || new Date();
 
     const yyyy = today.getFullYear();
     const month = aux(today.getMonth() + 1);
@@ -41,6 +41,10 @@ const ListPage = () => {
     return format;
   };
 
+  const handleModal = modalInfo => {
+    setModalInfo({ ...modalInfo, fee: makePriceFormat(modalInfo.fee) });
+  };
+
   useEffect(() => {
     window.scroll({
       top: 0,
@@ -48,8 +52,13 @@ const ListPage = () => {
   }, []);
   return (
     <>
-      <Modal showModal={showModal} setShowModal={setShowModal}></Modal>
-      <Navbar link="listPage" />
+      <Modal
+        makeDateFormat={makeDateFormat}
+        modalInfo={modalInfo}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      ></Modal>
+      <Navbar link="listPage" acessToken={tokenState.sign.acessToken} />
       <div>
         <div className={styles.title}>
           <h1>풋살장 예약하기</h1>
@@ -63,6 +72,8 @@ const ListPage = () => {
             address={data.location}
             label={data.stageType}
             price={makePriceFormat(data.fee)}
+            handleModal={handleModal}
+            data={data}
           />
         ))}
       </div>
