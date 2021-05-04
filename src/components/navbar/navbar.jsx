@@ -3,8 +3,14 @@ import { useHistory } from "react-router-dom";
 import Button from "../button/button";
 import { Link } from "react-router-dom";
 import styles from "./navbar.module.css";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { fetchData, signOut } from "../../actions";
 
-const Navbar = ({ link }) => {
+const URL = process.env.REACT_APP_SERVER_URL;
+const Navbar = ({ link, accessToken }) => {
+  const dispatch = useDispatch();
+
   const history = useHistory();
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -36,6 +42,15 @@ const Navbar = ({ link }) => {
 
   window.addEventListener("resize", showButton);
 
+  const hanldeSignOutBtn = () => {
+    dispatch(
+      fetchData(
+        `${URL}/sign/signout`,
+        { headers: { authorization: `Bearer ${accessToken}` } },
+        signOut
+      )
+    );
+  };
   return (
     <>
       <div className={styles.container}>
@@ -90,23 +105,43 @@ const Navbar = ({ link }) => {
               예약확인
             </Link>
           </li>
-          <li>
-            <Link
-              to="/"
-              className={styles.link_mobile}
-              onClick={closeMobileMenu}
-            >
-              로그인
-            </Link>
-          </li>
+          {accessToken ? (
+            <li>
+              <Link
+                to="/"
+                className={styles.link_mobile}
+                onClick={hanldeSignOutBtn}
+              >
+                로그아웃
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/" className={styles.link_mobile}>
+                로그인
+              </Link>
+            </li>
+          )}
         </ul>
-        {button && (
-          <div className={styles.login}>
-            <Button buttonStyle="two" path="/">
-              로그인
-            </Button>
-          </div>
-        )}
+        {accessToken
+          ? button && (
+              <div className={styles.login}>
+                <Button
+                  hanldeSignOutBtn={hanldeSignOutBtn}
+                  buttonStyle="two"
+                  path="/"
+                >
+                  로그아웃
+                </Button>
+              </div>
+            )
+          : button && (
+              <div className={styles.login}>
+                <Button buttonStyle="two" path="/">
+                  로그인
+                </Button>
+              </div>
+            )}
       </div>
     </>
   );
