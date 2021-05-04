@@ -1,36 +1,44 @@
 import React, { useState } from "react";
 import styles from "./signUp.module.css";
 import { useHistory } from "react-router";
+import axios from "axios";
 
-const SignUp = (props) => {
+const URL = process.env.REACT_APP_SERVER_URL;
+const SignUp = props => {
   const [enrollUserInfo, setEnrollUserInfo] = useState({
     email: "",
+    nickname: "",
     password: "",
     rePassword: "",
     errorMsg: null,
   });
   const history = useHistory();
 
-  const handleEnrollUserInfo = (key) => (event) => {
-    setEnrollUserInfo((preState) => ({
+  const handleEnrollUserInfo = key => event => {
+    setEnrollUserInfo(preState => ({
       ...preState,
       [key]: event.target.value,
     }));
   };
 
-  const handleValid = ({ email, password, rePassword }) => {
-    if (email === "" || password === "" || rePassword === "") {
-      setEnrollUserInfo((preState) => ({
+  const handleValid = ({ email, nickname, password, rePassword }) => {
+    if (
+      email === "" ||
+      nickname === "" ||
+      password === "" ||
+      rePassword === ""
+    ) {
+      setEnrollUserInfo(preState => ({
         ...preState,
         errorMsg: "모든 칸을 채워주세요.",
       }));
     } else if (email.includes("@") === false) {
-      setEnrollUserInfo((preState) => ({
+      setEnrollUserInfo(preState => ({
         ...preState,
         errorMsg: "올바른 email이 아닙니다.",
       }));
     } else if (password !== rePassword) {
-      setEnrollUserInfo((preState) => ({
+      setEnrollUserInfo(preState => ({
         ...preState,
         errorMsg: "입력한 비밀번호가 다릅니다.",
       }));
@@ -39,10 +47,22 @@ const SignUp = (props) => {
     }
   };
 
-  const handleEnroll = (enrollUserInfo) => {
+  const handleEnroll = async enrollUserInfo => {
     if (handleValid(enrollUserInfo)) {
-      //서버에 데이터베이스에 유저정보 등록요청
-      //응답코드에 따라 분기
+      try {
+        console.log("hi");
+        const { email, nickname, password } = enrollUserInfo;
+        await axios.post(`${URL}/sign/signup`, {
+          email,
+          nickname,
+          password,
+        });
+        history.push("/");
+      } catch (err) {
+        setEnrollUserInfo(preState => {
+          return { ...preState, errorMsg: "이미 존재하는 닉네임입니다." };
+        });
+      }
     }
   };
 
@@ -75,6 +95,12 @@ const SignUp = (props) => {
               type="email"
               className={`${styles.userInfo_ID} ${styles.input_signup}`}
               onChange={handleEnrollUserInfo("email")}
+            />
+            <input
+              placeholder="가입하실 nickname을 입력해주세요"
+              type="nickname"
+              className={`${styles.userInfo_NN} ${styles.input_signup}`}
+              onChange={handleEnrollUserInfo("nickname")}
             />
             <input
               placeholder="비밀번호를 입력해 주세요."
