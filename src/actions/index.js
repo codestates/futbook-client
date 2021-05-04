@@ -1,74 +1,51 @@
 // action types
 // sign part
 export const SIGN_IN = "SIGN_IN";
-export const SIGN_UP = "SIGN_UP";
 export const SIGN_OUT = "SIGN_OUT";
 //user part
 export const GET_USER_INFO = "GET_USER_INFO";
 // booking part
-export const BOOK_FUTSAL = "BOOK_FUTSAL";
 export const CHECK_BOOK = "CHECK_BOOK";
-export const CANCEL_BOOK = "CANCEL_BOOK";
 // futsal part
 export const GET_ALLFUTSAL_INFO = "GET_ALLFUTSAL_INFO";
 
 // actions creator functions
 // action creator: sign
-export const signIn = () => {
+export const signIn = accessToken => {
   return {
     type: SIGN_IN,
-    payload: {},
+    payload: { accessToken },
   };
 };
 
-export const signup = () => {
-  return {
-    type: SIGN_UP,
-    payload: {},
-  };
-};
-
-export const signout = () => {
+export const signOut = () => {
   return {
     type: SIGN_OUT,
-    payload: {},
+    payload: { accessToken: null },
   };
 };
 
 // action creator: user
-export const getUserInfo = () => {
+export const getUserInfo = userData => {
   return {
     type: GET_USER_INFO,
-    payload: {},
+    payload: userData,
   };
 };
 
 //action creator: booking
-export const bookFutsal = () => {
-  return {
-    type: BOOK_FUTSAL,
-    payload: {},
-  };
-};
-
-export const checkBook = () => {
+export const checkBook = bookingDatas => {
+  console.log(bookingDatas);
   return {
     type: CHECK_BOOK,
-    payload: {},
-  };
-};
-
-export const cancelBook = () => {
-  return {
-    type: CANCEL_BOOK,
-    payload: {},
+    payload: bookingDatas,
   };
 };
 
 // action creator: futsal
-export const getAllFutsalInfo = () => {
+export const getAllFutsalInfo = futsalDatas => {
   return {
     type: GET_ALLFUTSAL_INFO,
-    payload: {},
+    payload: futsalDatas,
   };
 };
