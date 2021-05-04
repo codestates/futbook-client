@@ -13,7 +13,7 @@ Main Page: 👉 <배포주소>
 Wiki: 👉 https://github.com/codestates/futbook-client/wiki
 
 ## Tech Stack
-![My First Board (3)](https://user-images.githubusercontent.com/71122594/116987586-36775300-ad0a-11eb-876a-da1998e8a106.jpg)
+![My First Board (5)](https://user-images.githubusercontent.com/71122594/116988810-dd102380-ad0b-11eb-9084-c7212dcc7b6b.jpg)
 
 
 ## Developers
