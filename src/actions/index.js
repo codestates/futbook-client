@@ -1,7 +1,6 @@
 // action types
 // sign part
 export const SIGN_IN = "SIGN_IN";
-export const SIGN_UP = "SIGN_UP";
 export const SIGN_OUT = "SIGN_OUT";
 //user part
 export const GET_USER_INFO = "GET_USER_INFO";
@@ -14,24 +13,17 @@ export const GET_ALLFUTSAL_INFO = "GET_ALLFUTSAL_INFO";
 
 // actions creator functions
 // action creator: sign
-export const signIn = () => {
+export const signIn = accessToken => {
   return {
     type: SIGN_IN,
-    payload: {},
+    payload: { accessToken },
   };
 };
 
-export const signup = () => {
-  return {
-    type: SIGN_UP,
-    payload: {},
-  };
-};
-
-export const signout = () => {
+export const signOut = () => {
   return {
     type: SIGN_OUT,
-    payload: {},
+    payload: { accessToken: null },
   };
 };
 
