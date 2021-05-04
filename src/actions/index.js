@@ -58,9 +58,9 @@ export const cancelBook = () => {
 };
 
 // action creator: futsal
-export const getAllFutsalInfo = () => {
+export const getAllFutsalInfo = futsalDatas => {
   return {
     type: GET_ALLFUTSAL_INFO,
-    payload: {},
+    payload: futsalDatas,
   };
 };

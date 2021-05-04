@@ -4,7 +4,8 @@ import { initialState } from "./initialState";
 const futsalReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALLFUTSAL_INFO:
-      return Object.assign.apply({}, state, {});
+      console.log(action.payload);
+      return Object.assign({}, state, { futsalData: action.payload });
 
     default:
       return state;
