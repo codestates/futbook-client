@@ -16,7 +16,7 @@ export const fetchData = (url, config, action) => async dispatch => {
   try {
     const { data } = await axios.get(url, config);
     const result = data.data;
-    console.log(result);
+    // console.log(result);
     dispatch(action(result));
   } catch (err) {
     return console.log(err);
@@ -50,16 +50,16 @@ export const signOut = () => {
 };
 
 // action creator: user
-export const getUserInfo = ({ userData }) => {
+export const getUserInfo = ({ userInfo }) => {
   return {
     type: GET_USER_INFO,
-    payload: userData,
+    payload: userInfo,
   };
 };
 
 //action creator: booking
 export const checkBook = ({ bookingDatas }) => {
-  console.log(bookingDatas);
+  // console.log(bookingDatas);
   return {
     type: CHECK_BOOK,
     payload: bookingDatas,

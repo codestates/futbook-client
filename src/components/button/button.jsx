@@ -2,8 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./button.module.css";
 
-const Button = ({ path, children, type, onClick, buttonStyle, buttonSize }) => {
-  const getButtonStyle = (buttonStyle) => {
+const Button = ({
+  path,
+  children,
+  type,
+  onClick,
+  buttonStyle,
+  buttonSize,
+  hanldeSignOutBtn,
+}) => {
+  const getButtonStyle = buttonStyle => {
     switch (buttonStyle) {
       case "one":
         return styles.one;
@@ -15,7 +23,7 @@ const Button = ({ path, children, type, onClick, buttonStyle, buttonSize }) => {
         return styles.one;
     }
   };
-  const getButtonSize = (buttonSize) => {
+  const getButtonSize = buttonSize => {
     switch (buttonSize) {
       case "small":
         return styles.small;
@@ -34,7 +42,7 @@ const Button = ({ path, children, type, onClick, buttonStyle, buttonSize }) => {
         className={`${styles.btn} ${getButtonStyle(
           buttonStyle
         )} ${getButtonSize(buttonSize)}`}
-        onClick={onClick}
+        onClick={hanldeSignOutBtn}
         type={type}
       >
         {children}

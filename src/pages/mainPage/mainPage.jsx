@@ -47,8 +47,8 @@ const MainPage = props => {
 
   return (
     <>
-      <Modal showModal={showModal} setShowModal={setShowModal}></Modal>
-      <Navbar></Navbar>
+      {/* <Modal showModal={showModal} setShowModal={setShowModal}></Modal> */}
+      <Navbar accessToken={tokenState.sign.accessToken}></Navbar>
       <VideoSection></VideoSection>
       <Stadium
         openModal={openModal}
