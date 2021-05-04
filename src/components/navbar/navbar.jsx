@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../button/button";
 import { Link } from "react-router-dom";
 import styles from "./navbar.module.css";
 
 const Navbar = ({ link }) => {
+  const history = useHistory();
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -55,7 +57,23 @@ const Navbar = ({ link }) => {
             click ? `${styles.menu} ${styles.active}` : `${styles.menu}`
           }
         >
-          {link === "listPage" ? null : (
+          {link === "listPage" ? (
+            <li className={styles.item}>
+              <div
+                className={styles.link}
+                onClick={() =>
+                  history.push({
+                    pathname: "main",
+                    state: {
+                      scroll: 1,
+                    },
+                  })
+                }
+              >
+                등록시설
+              </div>
+            </li>
+          ) : (
             <li className={styles.item}>
               <div className={styles.link} onClick={scrollToStadium}>
                 등록시설
@@ -68,7 +86,7 @@ const Navbar = ({ link }) => {
             </Link>
           </li>
           <li className={styles.item}>
-            <Link to="/main" className={styles.link} onClick={closeMobileMenu}>
+            <Link to="/list" className={styles.link} onClick={closeMobileMenu}>
               예약확인
             </Link>
           </li>
