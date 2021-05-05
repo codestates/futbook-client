@@ -7,6 +7,7 @@ import Stadium from "../../components/stadium/stadium";
 import Footer from "../../components/footer/footer";
 import { useLocation } from "react-router";
 import { fetchData, getAllFutsalInfo, getUserInfo } from "../../actions";
+import AccessModal from "../../components/modal_access/modal_access";
 
 const URL = process.env.REACT_APP_SERVER_URL;
 const MainPage = props => {
@@ -17,9 +18,15 @@ const MainPage = props => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
+  const [showNoAccessModal, setShowNoAccessModal] = useState(false);
   const [modalInfo, setModalInfo] = useState(null);
+
   const openModal = () => {
     setShowModal(prev => !prev);
+  };
+
+  const openNoAccessModal = () => {
+    setShowNoAccessModal(prev => !prev);
   };
 
   useEffect(() => {
@@ -58,15 +65,22 @@ const MainPage = props => {
         modalInfo={modalInfo}
         showModal={showModal}
         setShowModal={setShowModal}
-      ></MainModal>
-      <Navbar accessToken={tokenState.sign.accessToken}></Navbar>
-      <VideoSection></VideoSection>
+      />
+      <AccessModal
+        showNoAccessModal={showNoAccessModal}
+        setShowNoAccessModal={setShowNoAccessModal}
+      />
+      <Navbar
+        accessToken={tokenState.sign.accessToken}
+        openNoAccessModal={openNoAccessModal}
+      />
+      <VideoSection />
       <Stadium
         openModal={openModal}
         futsalDatas={futsalState.futsalData}
         getModalInfo={getModalInfo}
-      ></Stadium>
-      <Footer></Footer>
+      />
+      <Footer />
     </>
   );
 };
