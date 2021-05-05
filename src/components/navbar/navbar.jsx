@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { fetchData, signOut } from "../../actions";
 
 const URL = process.env.REACT_APP_SERVER_URL;
-const Navbar = ({ link, accessToken }) => {
+const Navbar = ({ link, accessToken, openNoAccessModal }) => {
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -96,14 +96,37 @@ const Navbar = ({ link, accessToken }) => {
             </li>
           )}
           <li className={styles.item}>
-            <Link to="/list" className={styles.link} onClick={closeMobileMenu}>
-              예약하기
-            </Link>
+            {accessToken ? (
+              <Link
+                to="/list"
+                className={styles.link}
+                onClick={closeMobileMenu}
+              >
+                예약하기
+              </Link>
+            ) : (
+              <div className={styles.link} onClick={openNoAccessModal}>
+                예약하기
+              </div>
+            )}
           </li>
           <li className={styles.item}>
             <Link to="/check" className={styles.link} onClick={closeMobileMenu}>
               예약확인
             </Link>
+            {accessToken ? (
+              <Link
+                to="/list"
+                className={styles.link}
+                onClick={closeMobileMenu}
+              >
+                예약확인
+              </Link>
+            ) : (
+              <div className={styles.link} onClick={openNoAccessModal}>
+                예약확인
+              </div>
+            )}
           </li>
           {accessToken ? (
             <li>
