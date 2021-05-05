@@ -74,7 +74,10 @@ const MainPage = props => {
         accessToken={tokenState.sign.accessToken}
         openNoAccessModal={openNoAccessModal}
       />
-      <VideoSection />
+      <VideoSection
+        accessToken={tokenState.sign.accessToken}
+        openNoAccessModal={openNoAccessModal}
+      />
       <Stadium
         openModal={openModal}
         futsalDatas={futsalState.futsalData}

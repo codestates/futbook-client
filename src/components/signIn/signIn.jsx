@@ -58,7 +58,7 @@ const SignIn = props => {
     <div className={styles.container}>
       <div className={styles.logo}>
         <img src="/images/logo.png" alt="logo" className={styles.logo_img} />
-        <div className={styles.logo_name}>BOOKING!</div>
+        <div className={styles.logo_name}>FUTBOOK</div>
       </div>
       <div className={styles.userInfo}>
         <input
