@@ -20,7 +20,7 @@ const ListItem = ({
         handleModal(data);
       }}
     >
-      <img className={styles.image} src={img} alt="stadium" />
+      <img className={styles.image} src={img} alt="list" />
       <div className={styles.info}>
         <div className={styles.info_top}>
           <p>{date}</p>

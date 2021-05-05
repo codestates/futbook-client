@@ -74,24 +74,25 @@ export const Modal = ({
                   src={modalInfo.thumnail}
                   alt="futsal"
                 ></img>
+
                 <p className={styles.title}>
                   {`${modalInfo.location} ${modalInfo.name}`}
                 </p>
                 <p className={styles.price}>{`${modalInfo.fee}`}</p>
               </div>
               <div className={styles.right}>
-                <DatePicker
-                  className={styles.datepick}
-                  minDate={new Date()}
-                  maxDate={new Date(2022, 1, 1)}
-                  required
-                  formatStyle="large"
-                  placeholder="날짜를 선택해 주세요."
-                  value={datePicked}
-                  label="예약가능한 날짜"
-                  onChange={(value) => setDatePicked(value)}
-                />
-
+                <div className={styles.datepick}>
+                  <DatePicker
+                    minDate={new Date()}
+                    maxDate={new Date(2022, 1, 1)}
+                    required
+                    formatStyle="large"
+                    placeholder="날짜를 선택해 주세요."
+                    value={datePicked}
+                    label="예약가능한 날짜"
+                    onChange={(value) => setDatePicked(value)}
+                  />
+                </div>
                 <Textarea
                   className={styles.textarea}
                   style={styles.input}
