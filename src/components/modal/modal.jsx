@@ -12,10 +12,11 @@ export const Modal = ({
   modalInfo,
   makeDateFormat,
   openSuccess,
+  openFail,
 }) => {
   const signState = useSelector((state) => state.signReducer);
   const [datePicked, setDatePicked] = useState(new Date());
-  const [bookErrMsg, setbookErrMsg] = useState(null);
+
   const backRef = useRef();
   const animation = useSpring({
     config: {
@@ -57,7 +58,7 @@ export const Modal = ({
       setShowModal((prev) => !prev);
       openSuccess();
     } catch (err) {
-      setbookErrMsg("해당 날짜는 이미 예약이 완료된 날짜입니다.");
+      openFail();
     }
   };
 
