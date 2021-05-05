@@ -15,12 +15,13 @@ const CheckPage = () => {
   const futsalState = useSelector(state => state.futsalReducer);
   const dispatch = useDispatch();
   const [myBooking, setMyBooking] = useState(null);
-
+  console.log("hi,there");
+  const length = bookingState.bookingData.length;
   useEffect(() => {
+    console.log("hi");
     window.scroll({
       top: 0,
     });
-
     dispatch(
       fetchData(
         `${URL}/booking/checkbook`,
@@ -32,7 +33,7 @@ const CheckPage = () => {
     );
 
     setMyBooking(bookingState.bookingData);
-  }, [bookingState]);
+  }, [length]);
 
   const futsalDatas = futsalState.futsalData;
   const userId = userState.userInfo.id;
@@ -50,17 +51,16 @@ const CheckPage = () => {
         data: { futsal_Id, user_Id: userId, bookingDate },
         headers: { authorization: `Bearer ${tokenState.sign.accessToken}` },
       });
-      setMyBooking(preState => {
-        const state = preState.filter(data => {
-          if (
-            data.futsal_Id !== futsal_Id &&
-            data.bookingData !== bookingDate
-          ) {
-            return data;
-          }
-        });
-        return state;
-      });
+
+      dispatch(
+        fetchData(
+          `${URL}/booking/checkbook`,
+          {
+            headers: { authorization: `Bearer ${tokenState.sign.accessToken}` },
+          },
+          checkBook
+        )
+      );
     } catch (err) {
       console.log(err.message);
     }
@@ -73,20 +73,26 @@ const CheckPage = () => {
         <div className={styles.title}>
           <h1>예약현황</h1>
         </div>
-        {Array.isArray(myBooking)
-          ? myBooking.map(bookData => (
-              <CheckItem
-                futsalData={futsalDatas.find(
-                  data => data.id === bookData.futsal_Id
-                )}
-                bookDate={bookData.bookingDate}
-                makePriceFormat={makePriceFormat}
-                handleBtnDelete={handleBtnDelete}
-              />
-            ))
-          : null}
+        {Array.isArray(myBooking) && length !== 0 ? (
+          myBooking.map(bookData => (
+            <CheckItem
+              futsalData={futsalDatas.find(
+                data => data.id === bookData.futsal_Id
+              )}
+              bookDate={bookData.bookingDate}
+              makePriceFormat={makePriceFormat}
+              handleBtnDelete={handleBtnDelete}
+            />
+          ))
+        ) : (
+          <div className={styles.msg}>
+            현재 예약된 풋살장이 존재하지 않습니다.
+          </div>
+        )}
       </div>
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </>
   );
 };
