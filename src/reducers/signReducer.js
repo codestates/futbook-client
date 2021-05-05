@@ -7,7 +7,6 @@ const signReducer = (state = initialState, action) => {
       return Object.assign({}, state, { sign: action.payload });
 
     case SIGN_OUT:
-      console.log(action.payload);
       return Object.assign({}, state, { sign: action.payload });
 
     default:

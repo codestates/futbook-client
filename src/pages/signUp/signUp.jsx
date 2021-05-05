@@ -50,7 +50,6 @@ const SignUp = props => {
   const handleEnroll = async enrollUserInfo => {
     if (handleValid(enrollUserInfo)) {
       try {
-        console.log("hi");
         const { email, nickname, password } = enrollUserInfo;
         await axios.post(`${URL}/sign/signup`, {
           email,

@@ -22,9 +22,6 @@ const MainPage = props => {
     setShowModal(prev => !prev);
   };
 
-  console.log("user", userState.userInfo);
-  console.log("futsal", futsalState.futsalData);
-
   useEffect(() => {
     if (location.state !== undefined) {
       window.scroll({
