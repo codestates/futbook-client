@@ -15,10 +15,9 @@ const CheckPage = () => {
   const futsalState = useSelector(state => state.futsalReducer);
   const dispatch = useDispatch();
   const [myBooking, setMyBooking] = useState(null);
-  console.log("hi,there");
+
   const length = bookingState.bookingData.length;
   useEffect(() => {
-    console.log("hi");
     window.scroll({
       top: 0,
     });
