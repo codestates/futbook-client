@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Modal from "../../components/modal/modal";
+import MainModal from "../../components/mainmodal/mainModal";
 import Navbar from "../../components/navbar/navbar";
 import VideoSection from "../../components/video_section/video_section";
 import Stadium from "../../components/stadium/stadium";
@@ -17,6 +17,7 @@ const MainPage = props => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
+  const [modalInfo, setModalInfo] = useState(null);
   const openModal = () => {
     setShowModal(prev => !prev);
   };
@@ -45,14 +46,28 @@ const MainPage = props => {
     dispatch(fetchData(`${URL}/futsal/allinfo`, {}, getAllFutsalInfo));
   }, []);
 
+  const makePriceFormat = price => {
+    price = String(price).slice(0, 3) + "," + String(price).slice(3);
+    return `${price}원`;
+  };
+
+  const getModalInfo = modalInfo => {
+    setModalInfo({ ...modalInfo, fee: makePriceFormat(modalInfo.fee) });
+  };
+
   return (
     <>
-      {/* <Modal showModal={showModal} setShowModal={setShowModal}></Modal> */}
+      <MainModal
+        modalInfo={modalInfo}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      ></MainModal>
       <Navbar accessToken={tokenState.sign.accessToken}></Navbar>
       <VideoSection></VideoSection>
       <Stadium
         openModal={openModal}
         futsalDatas={futsalState.futsalData}
+        getModalInfo={getModalInfo}
       ></Stadium>
       <Footer></Footer>
     </>

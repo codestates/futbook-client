@@ -8,8 +8,8 @@ import Modal from "../../components/modal/modal";
 import ModalSuccess from "../../components/modal_success/modal_success";
 import ModalFail from "../../components/modal_fail/modal_fail";
 const ListPage = () => {
-  const futsalState = useSelector((state) => state.futsalReducer);
-  const tokenState = useSelector((state) => state.signReducer);
+  const futsalState = useSelector(state => state.futsalReducer);
+  const tokenState = useSelector(state => state.signReducer);
 
   const [showModal, setShowModal] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -19,24 +19,24 @@ const ListPage = () => {
   const [futsalDatas, setFutsalDatas] = useState(futsalState.futsalData);
 
   const openModal = () => {
-    setShowModal((prev) => !prev);
+    setShowModal(prev => !prev);
   };
 
   const openSuccess = () => {
-    setShowSuccess((prev) => !prev);
+    setShowSuccess(prev => !prev);
   };
 
   const openFail = () => {
-    setShowFail((prev) => !prev);
+    setShowFail(prev => !prev);
   };
 
-  const makePriceFormat = (price) => {
+  const makePriceFormat = price => {
     price = String(price).slice(0, 3) + "," + String(price).slice(3);
     return `${price}원`;
   };
 
-  const makeDateFormat = (day) => {
-    const aux = (num) => {
+  const makeDateFormat = day => {
+    const aux = num => {
       if (num < 10) {
         return "0" + String(num);
       } else {
@@ -55,7 +55,7 @@ const ListPage = () => {
     return format;
   };
 
-  const handleModal = (modalInfo) => {
+  const handleModal = modalInfo => {
     setModalInfo({ ...modalInfo, fee: makePriceFormat(modalInfo.fee) });
   };
 
@@ -76,7 +76,7 @@ const ListPage = () => {
       ></Modal>
       <ModalSuccess showSuccess={showSuccess} setShowSuccess={setShowSuccess} />
       <ModalFail showFail={showFail} setShowFail={setShowFail} />
-      <Navbar link="listPage" acessToken={tokenState.sign.acessToken} />
+      <Navbar link="listPage" accessToken={tokenState.sign.accessToken} />
       <div>
         <div className={styles.title}>
           <h1>풋살장 예약하기</h1>

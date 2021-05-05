@@ -1,10 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./stadium_item.module.css";
-const StadiumItem = ({ openModal, path, label, img, title }) => {
+const StadiumItem = ({
+  openModal,
+  getModalInfo,
+  data,
+  path,
+  label,
+  img,
+  title,
+}) => {
   return (
     <>
-      <li className={styles.item} onClick={openModal}>
+      <li
+        className={styles.item}
+        onClick={() => {
+          openModal();
+          getModalInfo(data);
+        }}
+      >
         <Link className={styles.link} to={path}>
           <div
             className={
