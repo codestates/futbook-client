@@ -6,11 +6,15 @@ import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import Modal from "../../components/modal/modal";
 import ModalSuccess from "../../components/modal_success/modal_success";
+import ModalFail from "../../components/modal_fail/modal_fail";
 const ListPage = () => {
   const futsalState = useSelector((state) => state.futsalReducer);
   const tokenState = useSelector((state) => state.signReducer);
+
   const [showModal, setShowModal] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showFail, setShowFail] = useState(false);
+
   const [modalInfo, setModalInfo] = useState(null);
   const [futsalDatas, setFutsalDatas] = useState(futsalState.futsalData);
 
@@ -20,6 +24,10 @@ const ListPage = () => {
 
   const openSuccess = () => {
     setShowSuccess((prev) => !prev);
+  };
+
+  const openFail = () => {
+    setShowFail((prev) => !prev);
   };
 
   const makePriceFormat = (price) => {
@@ -64,11 +72,10 @@ const ListPage = () => {
         showModal={showModal}
         setShowModal={setShowModal}
         openSuccess={openSuccess}
+        openFail={openFail}
       ></Modal>
-      <ModalSuccess
-        showSuccess={showSuccess}
-        setShowSuccess={setShowSuccess}
-      ></ModalSuccess>
+      <ModalSuccess showSuccess={showSuccess} setShowSuccess={setShowSuccess} />
+      <ModalFail showFail={showFail} setShowFail={setShowFail} />
       <Navbar link="listPage" acessToken={tokenState.sign.acessToken} />
       <div>
         <div className={styles.title}>
