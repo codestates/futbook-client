@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MainPage from "./pages/mainPage/mainPage";
 import SignUp from "./pages/signUp/signUp";
 import ListPage from "./pages/listPage/listPage";
+import CheckPage from "./pages/checkPage/checkPage";
 const App = () => {
   return (
     <Router>
@@ -20,6 +21,9 @@ const App = () => {
         </Route>
         <Route path="/list">
           <ListPage />
+        </Route>
+        <Route path="/check">
+          <CheckPage />
         </Route>
       </Switch>
     </Router>

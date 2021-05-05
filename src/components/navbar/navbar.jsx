@@ -101,7 +101,7 @@ const Navbar = ({ link, accessToken }) => {
             </Link>
           </li>
           <li className={styles.item}>
-            <Link to="/list" className={styles.link} onClick={closeMobileMenu}>
+            <Link to="/check" className={styles.link} onClick={closeMobileMenu}>
               예약확인
             </Link>
           </li>

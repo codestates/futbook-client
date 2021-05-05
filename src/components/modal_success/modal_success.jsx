@@ -1,8 +1,10 @@
 import React, { useRef, useEffect, useCallback, useState } from "react";
 import { useSpring, animated } from "react-spring";
+import { useHistory } from "react-router-dom";
 import styles from "./modal_success.module.css";
 
 const ModalSuccess = ({ showSuccess, setShowSuccess }) => {
+  const history = useHistory();
   const backRef = useRef();
 
   const animation = useSpring({
@@ -46,7 +48,11 @@ const ModalSuccess = ({ showSuccess, setShowSuccess }) => {
                 </div>
                 <button
                   className={styles.btn_check}
-                  onClick={() => setShowSuccess((prev) => !prev)}
+                  onClick={() => {
+                    history.push({
+                      pathname: "check",
+                    });
+                  }}
                 >
                   예약확인
                 </button>
