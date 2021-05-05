@@ -33,6 +33,23 @@ video {
   margin-top: 2rem;
 }
 
+.noAccess_btn {
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  padding: 12px 26px;
+}
+
+.noAccess_btn:hover {
+  transition: all 0.3s ease-out;
+  background: #fff;
+  color: #242424;
+}
+
 @media screen and (max-width: 960px) {
   .container > h1 {
     font-size: 4rem;
