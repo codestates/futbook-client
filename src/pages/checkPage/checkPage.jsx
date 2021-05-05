@@ -1,50 +1,70 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./checkPage.module.css";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import CheckItem from "../../components/check_item/check_item";
+import { checkBook, fetchData } from "../../actions";
+import axios from "axios";
 
+const URL = process.env.REACT_APP_SERVER_URL;
 const CheckPage = () => {
-  const bookingState = useSelector((state) => state.bookingReducer);
-  const tokenState = useSelector((state) => state.signReducer);
-
-  const [modalInfo, setModalInfo] = useState(null);
-  const [bookingDatas, setBookingDatas] = useState(bookingState.bookingData);
-
-  // UI를 조건분기를 위한 임의 데이터
-  const isExist = true;
-
-  const makePriceFormat = (price) => {
-    price = String(price).slice(0, 3) + "," + String(price).slice(3);
-    return `${price}원`;
-  };
-
-  const makeDateFormat = (day) => {
-    const aux = (num) => {
-      if (num < 10) {
-        return "0" + String(num);
-      } else {
-        return String(num);
-      }
-    };
-
-    const today = day || new Date();
-
-    const yyyy = today.getFullYear();
-    const month = aux(today.getMonth() + 1);
-    const dd = aux(today.getDate());
-
-    const format = [yyyy, month, dd].join("/");
-
-    return format;
-  };
+  const bookingState = useSelector(state => state.bookingReducer);
+  const tokenState = useSelector(state => state.signReducer);
+  const userState = useSelector(state => state.userReducer);
+  const futsalState = useSelector(state => state.futsalReducer);
+  const dispatch = useDispatch();
+  const [myBooking, setMyBooking] = useState(null);
 
   useEffect(() => {
     window.scroll({
       top: 0,
     });
-  }, []);
+
+    dispatch(
+      fetchData(
+        `${URL}/booking/checkbook`,
+        {
+          headers: { authorization: `Bearer ${tokenState.sign.accessToken}` },
+        },
+        checkBook
+      )
+    );
+
+    setMyBooking(bookingState.bookingData);
+  }, [bookingState]);
+
+  const futsalDatas = futsalState.futsalData;
+  const userId = userState.userInfo.id;
+
+  // UI를 조건분기를 위한 임의 데이터
+  // console.log(myBooking);
+  const makePriceFormat = price => {
+    price = String(price).slice(0, 3) + "," + String(price).slice(3);
+    return `${price}원`;
+  };
+
+  const handleBtnDelete = async (futsal_Id, bookingDate) => {
+    try {
+      await axios.delete(`${URL}/booking/cancelbook`, {
+        data: { futsal_Id, user_Id: userId, bookingDate },
+        headers: { authorization: `Bearer ${tokenState.sign.accessToken}` },
+      });
+      setMyBooking(preState => {
+        const state = preState.filter(data => {
+          if (
+            data.futsal_Id !== futsal_Id &&
+            data.bookingData !== bookingDate
+          ) {
+            return data;
+          }
+        });
+        return state;
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   return (
     <>
@@ -53,16 +73,18 @@ const CheckPage = () => {
         <div className={styles.title}>
           <h1>예약현황</h1>
         </div>
-        {isExist ? (
-          <CheckItem
-            img="/images/inside_football1.jpeg"
-            date="2021/05/22"
-            title="가 풋살장"
-            address="서울특별시 강남구 코드로 1길 스테이츠빌딩 1층"
-            label="실내"
-            price="200,000"
-          />
-        ) : null}
+        {Array.isArray(myBooking)
+          ? myBooking.map(bookData => (
+              <CheckItem
+                futsalData={futsalDatas.find(
+                  data => data.id === bookData.futsal_Id
+                )}
+                bookDate={bookData.bookingDate}
+                makePriceFormat={makePriceFormat}
+                handleBtnDelete={handleBtnDelete}
+              />
+            ))
+          : null}
       </div>
       <Footer />
     </>
