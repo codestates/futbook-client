@@ -1,31 +1,37 @@
 import React, { useRef, useEffect, useCallback, useState } from "react";
+import { useHistory } from "react-router";
 import { useSpring, animated } from "react-spring";
 import styles from "./modal_access.module.css";
 
-const AccessModal = ({ showFail, setShowFail }) => {
+const AccessModal = ({ showNoAccessModal, setShowNoAccessModal }) => {
+  const history = useHistory();
   const backRef = useRef();
 
   const animation = useSpring({
     config: {
       duration: 200,
     },
-    opacity: showFail ? 1 : 0,
-    transform: showFail ? `translateY(5%)` : `translateY(-100%)`,
+    opacity: showNoAccessModal ? 1 : 0,
+    transform: showNoAccessModal ? `translateY(5%)` : `translateY(-100%)`,
   });
 
   const closeFail = e => {
     if (backRef.current === e.target) {
-      setShowFail(false);
+      setShowNoAccessModal(false);
     }
+  };
+
+  const handleBtnLogin = () => {
+    history.push("/");
   };
 
   const keyPress = useCallback(
     e => {
-      if (showFail && e.key === "Escape") {
-        setShowFail(false);
+      if (showNoAccessModal && e.key === "Escape") {
+        setShowNoAccessModal(false);
       }
     },
-    [setShowFail, showFail]
+    [setShowNoAccessModal, showNoAccessModal]
   );
 
   useEffect(() => {
@@ -34,13 +40,13 @@ const AccessModal = ({ showFail, setShowFail }) => {
   }, [keyPress]);
   return (
     <>
-      {showFail ? (
+      {showNoAccessModal ? (
         <div className={styles.back} onClick={closeFail} ref={backRef}>
           <animated.div style={animation}>
             <div className={styles.wrap}>
               <div
                 className={styles.close}
-                onClick={() => setShowFail(prev => !prev)}
+                onClick={() => setShowNoAccessModal(prev => !prev)}
               >
                 <i className="fas fa-times"></i>
               </div>
@@ -48,10 +54,12 @@ const AccessModal = ({ showFail, setShowFail }) => {
                 <i class="fas fa-exclamation-circle"></i>
                 <p>로그인이 필요한 페이지입니다.</p>
               </div>
-              <button className={styles.btn_signIn}>로그인하러 가기</button>
+              <button className={styles.btn_signIn} onClick={handleBtnLogin}>
+                로그인하러 가기
+              </button>
               <button
                 className={styles.btn_close}
-                onClick={() => setShowFail(prev => !prev)}
+                onClick={() => setShowNoAccessModal(prev => !prev)}
               >
                 닫기
               </button>
