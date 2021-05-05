@@ -11,8 +11,9 @@ export const Modal = ({
   setShowModal,
   modalInfo,
   makeDateFormat,
+  openSuccess,
 }) => {
-  const signState = useSelector(state => state.signReducer);
+  const signState = useSelector((state) => state.signReducer);
   const [datePicked, setDatePicked] = useState(new Date());
   const [bookErrMsg, setbookErrMsg] = useState(null);
   const backRef = useRef();
@@ -24,14 +25,14 @@ export const Modal = ({
     transform: showModal ? `translateY(5%)` : `translateY(-100%)`,
   });
 
-  const closeModal = e => {
+  const closeModal = (e) => {
     if (backRef.current === e.target) {
       setShowModal(false);
     }
   };
 
   const keyPress = useCallback(
-    e => {
+    (e) => {
       if (showModal && e.key === "Escape") {
         setShowModal(false);
       }
@@ -53,6 +54,8 @@ export const Modal = ({
         { futsal_Id: modalInfo.id, bookingDate: day },
         { headers: { authorization: `Bearer ${accessToken}` } }
       );
+      setShowModal((prev) => !prev);
+      openSuccess();
     } catch (err) {
       setbookErrMsg("해당 날짜는 이미 예약이 완료된 날짜입니다.");
     }
@@ -85,7 +88,7 @@ export const Modal = ({
                   placeholder="날짜를 선택해 주세요."
                   value={datePicked}
                   label="예약가능한 날짜"
-                  onChange={value => setDatePicked(value)}
+                  onChange={(value) => setDatePicked(value)}
                 />
 
                 <Textarea
@@ -98,7 +101,6 @@ export const Modal = ({
                 <button
                   className={styles.btn_booking}
                   onClick={() => {
-                    setShowModal(prev => !prev);
                     handleBookingBtn();
                   }}
                 >
@@ -107,7 +109,7 @@ export const Modal = ({
               </div>
               <div
                 className={styles.close}
-                onClick={() => setShowModal(prev => !prev)}
+                onClick={() => setShowModal((prev) => !prev)}
               >
                 <i className="fas fa-times"></i>
               </div>
