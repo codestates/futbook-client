@@ -41,10 +41,10 @@
 }
 
 .reserve_text {
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   font-weight: bold;
   color: darkslategray;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .logo_img {
@@ -58,19 +58,29 @@
 
 .input_signup {
   height: 2.5rem;
-  font-size: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  outline: none;
   margin-bottom: 1.5rem;
   padding: 0.5rem;
 }
+.input_margin {
+  margin-bottom: 3rem;
+}
+.input_signup:focus {
+  border: 2px solid darkslategray;
+  border-radius: 5px;
+}
 
 .input_signup::placeholder {
-  font-size: 1.2rem;
+  font-size: 1.01rem;
 }
 
 .errorMsg {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 1.5rem;
-  color: red;
+  color: #ea3e32;
   font-weight: bold;
 }
 

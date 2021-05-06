@@ -6,7 +6,7 @@ import styles from "./signIn.module.css";
 import { signIn } from "../../actions";
 
 const URL = process.env.REACT_APP_SERVER_URL;
-const SignIn = props => {
+const SignIn = (props) => {
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
@@ -16,13 +16,13 @@ const SignIn = props => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleUserInfo = key => event => {
-    setUserInfo(preState => ({ ...preState, [key]: event.target.value }));
+  const handleUserInfo = (key) => (event) => {
+    setUserInfo((preState) => ({ ...preState, [key]: event.target.value }));
   };
 
   const checkValidUserInfo = (email, password) => {
     if (email === "" || password === "") {
-      setUserInfo(preState => {
+      setUserInfo((preState) => {
         return { ...preState, errMsg: "모든 정보를 입력해주세요." };
       });
       return false;
@@ -41,7 +41,7 @@ const SignIn = props => {
         dispatch(signIn(data.data));
         history.push("/main");
       } catch (err) {
-        setUserInfo(preState => {
+        setUserInfo((preState) => {
           return { ...preState, errMsg: "잘못된 아이디나 패스워드 입니다." };
         });
       }
@@ -70,7 +70,9 @@ const SignIn = props => {
         <input
           placeholder="비밀번호를 입력하세요."
           type="password"
-          className={`${styles.userInfo_PW} ${styles.input_signin}`}
+          className={`${styles.userInfo_PW} ${styles.input_signin} ${
+            userInfo.errMsg ? "" : styles.input_margin
+          }`}
           onChange={handleUserInfo("password")}
         />
         {userInfo.errMsg ? (

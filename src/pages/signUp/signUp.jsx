@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import axios from "axios";
 
 const URL = process.env.REACT_APP_SERVER_URL;
-const SignUp = props => {
+const SignUp = (props) => {
   const [enrollUserInfo, setEnrollUserInfo] = useState({
     email: "",
     nickname: "",
@@ -14,8 +14,8 @@ const SignUp = props => {
   });
   const history = useHistory();
 
-  const handleEnrollUserInfo = key => event => {
-    setEnrollUserInfo(preState => ({
+  const handleEnrollUserInfo = (key) => (event) => {
+    setEnrollUserInfo((preState) => ({
       ...preState,
       [key]: event.target.value,
     }));
@@ -28,17 +28,17 @@ const SignUp = props => {
       password === "" ||
       rePassword === ""
     ) {
-      setEnrollUserInfo(preState => ({
+      setEnrollUserInfo((preState) => ({
         ...preState,
         errorMsg: "모든 칸을 채워주세요.",
       }));
     } else if (email.includes("@") === false) {
-      setEnrollUserInfo(preState => ({
+      setEnrollUserInfo((preState) => ({
         ...preState,
         errorMsg: "올바른 email이 아닙니다.",
       }));
     } else if (password !== rePassword) {
-      setEnrollUserInfo(preState => ({
+      setEnrollUserInfo((preState) => ({
         ...preState,
         errorMsg: "입력한 비밀번호가 다릅니다.",
       }));
@@ -47,7 +47,7 @@ const SignUp = props => {
     }
   };
 
-  const handleEnroll = async enrollUserInfo => {
+  const handleEnroll = async (enrollUserInfo) => {
     if (handleValid(enrollUserInfo)) {
       try {
         const { email, nickname, password } = enrollUserInfo;
@@ -58,7 +58,7 @@ const SignUp = props => {
         });
         history.push("/");
       } catch (err) {
-        setEnrollUserInfo(preState => {
+        setEnrollUserInfo((preState) => {
           return { ...preState, errorMsg: "이미 존재하는 닉네임입니다." };
         });
       }
@@ -110,7 +110,9 @@ const SignUp = props => {
             <input
               placeholder="비밀번호를 재입력해 주세요."
               type="password"
-              className={`${styles.userInfo_RePW} ${styles.input_signup}`}
+              className={`${styles.userInfo_RePW} ${styles.input_signup} ${
+                enrollUserInfo.errorMsg ? "" : styles.input_margin
+              }`}
               onChange={handleEnrollUserInfo("rePassword")}
             />
           </div>
@@ -126,7 +128,7 @@ const SignUp = props => {
             회원가입
           </button>
           <button className={styles.btn_signup} onClick={handleMoveSignIn}>
-            로그인하러 돌아가기
+            로그인 페이지
           </button>
         </div>
       </div>
