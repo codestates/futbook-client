@@ -25,26 +25,43 @@
 }
 
 .userInfo > .input_signin {
-  height: 2.5rem;
-  font-size: 1.5rem;
+  height: 2.6rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
 }
 
+.input_signin:focus {
+  border: 2px solid darkslategray;
+  border-radius: 5px;
+}
 .userInfo_ID {
   margin-bottom: 1.5rem;
   padding: 0.5rem;
 }
-
 .userInfo_PW {
-  margin-bottom: 5rem;
   padding: 0.5rem;
 }
 
+.input_margin {
+  margin-bottom: 4.2rem;
+}
+
 .userInfo_ID::placeholder {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
 }
 
 .userInfo_PW::placeholder {
+  font-size: 1.05rem;
+}
+
+.errMsg {
+  color: #ea3e32;
+  text-align: center;
   font-size: 1.2rem;
+  font-weight: bold;
+  margin: 2rem 0;
 }
 
 .btn_signin {
@@ -56,7 +73,7 @@
   box-shadow: 0.1rem 0.1rem 0.1rem darkslategray;
   background-color: transparent;
   outline: none;
-  transition: background-color 0.5s, color 0.5s;
+  transition: background-color 0.45s, color 0.45s;
 }
 
 .btn_signin:hover {
