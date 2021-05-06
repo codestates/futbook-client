@@ -105,7 +105,13 @@ const Navbar = ({ link, accessToken, openNoAccessModal }) => {
                 예약하기
               </Link>
             ) : (
-              <div className={styles.link} onClick={openNoAccessModal}>
+              <div
+                className={styles.link}
+                onClick={() => {
+                  closeMobileMenu();
+                  openNoAccessModal();
+                }}
+              >
                 예약하기
               </div>
             )}
@@ -120,7 +126,13 @@ const Navbar = ({ link, accessToken, openNoAccessModal }) => {
                 예약확인
               </Link>
             ) : (
-              <div className={styles.link} onClick={openNoAccessModal}>
+              <div
+                className={styles.link}
+                onClick={() => {
+                  closeMobileMenu();
+                  openNoAccessModal();
+                }}
+              >
                 예약확인
               </div>
             )}

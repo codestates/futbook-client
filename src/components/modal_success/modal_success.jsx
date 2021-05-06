@@ -15,14 +15,14 @@ const ModalSuccess = ({ showSuccess, setShowSuccess }) => {
     transform: showSuccess ? `translateY(5%)` : `translateY(-100%)`,
   });
 
-  const closeSuccess = (e) => {
+  const closeSuccess = e => {
     if (backRef.current === e.target) {
       setShowSuccess(false);
     }
   };
 
   const keyPress = useCallback(
-    (e) => {
+    e => {
       if (showSuccess && e.key === "Escape") {
         setShowSuccess(false);
       }
@@ -40,29 +40,27 @@ const ModalSuccess = ({ showSuccess, setShowSuccess }) => {
         <div className={styles.back} onClick={closeSuccess} ref={backRef}>
           <animated.div style={animation}>
             <div className={styles.wrap}>
-              <div className={styles.left}></div>
-              <div className={styles.right}>
-                <div className={styles.title}>
-                  예약완료 &nbsp;
-                  <i className={`fas fa-check ${styles.check}`}></i>
-                </div>
-                <button
-                  className={styles.btn_check}
-                  onClick={() => {
-                    history.push({
-                      pathname: "check",
-                    });
-                  }}
-                >
-                  예약확인
-                </button>
-              </div>
               <div
                 className={styles.close}
-                onClick={() => setShowSuccess((prev) => !prev)}
+                onClick={() => setShowSuccess(prev => !prev)}
               >
                 <i className="fas fa-times"></i>
               </div>
+
+              <div className={styles.title}>
+                <p className={styles.title_msg}>예약완료</p>
+                <i className="fas fa-check"></i>
+              </div>
+              <button
+                className={styles.btn_toCheck}
+                onClick={() => {
+                  history.push({
+                    pathname: "check",
+                  });
+                }}
+              >
+                예약확인하러 가기
+              </button>
             </div>
           </animated.div>
         </div>
