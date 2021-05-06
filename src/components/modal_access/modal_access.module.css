@@ -29,7 +29,7 @@
 
 .msg > i {
   margin-right: 0.5rem;
-  color: red;
+  color: #ea3e32;
 }
 
 .close {
@@ -39,7 +39,7 @@
   margin-top: 1rem;
   margin-right: 1rem;
   font-size: 1.8rem;
-  color: red;
+  color: #ea3e32;
 }
 
 button {
@@ -56,20 +56,20 @@ button {
 
 .btn_signIn {
   background-color: #fff;
-  border: 0.5px solid green;
+  border: 0.5px solid #397b22;
   margin-bottom: 0.5rem;
 }
 
 .btn_close {
   background-color: #fff;
-  border: 0.5px solid red;
+  border: 0.5px solid #ea3e32;
 }
 
 .btn_close:hover {
-  background-color: red;
+  background-color: #ea3e32;
   color: #fff;
 }
 .btn_signIn:hover {
-  background-color: green;
+  background-color: #3c7a25;
   color: #fff;
 }
