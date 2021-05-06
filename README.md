@@ -24,7 +24,7 @@ Wiki: 👉 https://github.com/codestates/futbook-client/wiki
 ## Developers
 | Name  | Position   | Email              | 
 | ----- | ---------- | ------------------ |
-| 민제현  | Front-end  |                    | 
-| 민제경  | Front-end  |                    | 
-| 함민우  | Back-end   |                    | 
-| 백현준  | Back-end   | hjbaek91@gmail.com | 
+| 👨🏻‍💻 민제경 |  Front-end  | jekyung.newton@gmail.com| 
+| 👨🏻‍💻 함민우 |  Front-end   | hammin330@knou.ac.kr | 
+| 👨🏻‍💻 민제현 |  Back-end   | alswpgus0@gmail.com | 
+| 👨🏻‍💻 백현준 |  Back-end | hjbaek91@gmail.com |
