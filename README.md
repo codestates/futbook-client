@@ -18,7 +18,7 @@
     in and sign up today!**
 
 ## Detail
-Main Page: 👉 <배포주소>
+Main Page: 👉 https://futbook.cf/
 
 Wiki: 👉 https://github.com/codestates/futbook-client/wiki
 
