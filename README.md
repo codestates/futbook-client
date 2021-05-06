@@ -15,6 +15,11 @@ Wiki: 👉 https://github.com/codestates/futbook-client/wiki
 ## Tech Stack
 ![My First Board (5)](https://user-images.githubusercontent.com/71122594/116988810-dd102380-ad0b-11eb-9084-c7212dcc7b6b.jpg)
 
+## Front-end
+![Futbook_Flowchart (6)](https://user-images.githubusercontent.com/71122594/117303068-44b6a200-aeb7-11eb-9165-a50f2c64582b.jpg)
+
+## Back-end
+![Untitled (1)](https://user-images.githubusercontent.com/71122594/117003286-9f1cfa80-ad1f-11eb-9e74-bac1ae27b520.jpg)
 
 ## Developers
 | Name  | Position   | Email              | 
