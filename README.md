@@ -19,7 +19,7 @@
     in and sign up today!**
 
 ## 🥅 Details
- ![version](https://img.shields.io/badge/Version-v1.0.0-orange) ![npm](https://img.shields.io/npm/v/npm) ![node](https://img.shields.io/badge/node-v15.11.0-green)
+ ![version](https://img.shields.io/badge/Version-v1.0.0-orange) ![npm](https://img.shields.io/npm/v/npm) ![node](https://img.shields.io/badge/node-v15.9.0-green)
 
 Main Page: 👉 https://futbook.cf/
 
@@ -34,7 +34,7 @@ Wiki: 👉 https://github.com/codestates/futbook-client/wiki
 ## 🔨 Back-end
 ![Untitled (1)](https://user-images.githubusercontent.com/71122594/117003286-9f1cfa80-ad1f-11eb-9e74-bac1ae27b520.jpg)
 
-## 🙆🏻‍♂️Developers
+## 🙆🏻‍♂️ Developers
 | Name  | Position   | Email              | 
 | ----- | ---------- | ------------------ |
 | 👨🏻‍💻 민제경 |  Front-end  | jekyung.newton@gmail.com| 
