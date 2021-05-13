@@ -25,6 +25,8 @@ Main Page: 👉 https://futbook.cf/
 
 Wiki: 👉 https://github.com/codestates/futbook-client/wiki
 
+<br/>
+
 ## 🛠 Tech Stack
 ![My First Board (5)](https://user-images.githubusercontent.com/71122594/116988810-dd102380-ad0b-11eb-9084-c7212dcc7b6b.jpg)
 
