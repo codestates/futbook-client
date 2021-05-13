@@ -18,7 +18,7 @@
 **With just a few clicks through our website, you can book any futsal field of your choice in any day! So what are you waiting for? Come on 
     in and sign up today!**
 
-## 🥅 Detail
+## 🥅 Details
 Main Page: 👉 https://futbook.cf/
 
 Wiki: 👉 https://github.com/codestates/futbook-client/wiki
