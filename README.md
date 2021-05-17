@@ -19,7 +19,7 @@
     in and sign up today!**
 
 ## 🥅 Details
- ![version](https://img.shields.io/badge/Version-v1.0.0-orange) ![npm](https://img.shields.io/npm/v/npm) ![node](https://img.shields.io/badge/node-v15.9.0-green)
+ ![version](https://img.shields.io/badge/Version-v1.0.0-orange)
 
 Main Page: 👉 https://futbook.cf/
 
