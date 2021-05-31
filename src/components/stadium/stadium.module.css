@@ -1,0 +1,44 @@
+.stadium {
+  padding: 4rem;
+  background: #fff;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.wrapper {
+  position: relative;
+  margin: 3rem 0 0 0;
+}
+
+.items {
+  margin-bottom: 1.5rem;
+}
+
+.item {
+  list-style: none;
+}
+
+@media only screen and (min-width: 48rem) {
+  .items {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 90rem) {
+  .container {
+    width: 80%;
+  }
+}

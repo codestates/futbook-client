@@ -1,0 +1,80 @@
+video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+}
+
+.container > h1 {
+  color: #fff;
+  font-size: 4rem;
+  margin-top: -7rem;
+}
+
+.container > p {
+  margin-top: 1.5rem;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.btns {
+  margin-top: 2rem;
+}
+
+.noAccess_btn {
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  padding: 12px 26px;
+}
+
+.noAccess_btn:hover {
+  transition: all 0.3s ease-out;
+  background: #fff;
+  color: #242424;
+}
+
+@media screen and (max-width: 960px) {
+  .container > h1 {
+    font-size: 4rem;
+    margin-top: -6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container > h1 {
+    font-size: 3.3rem;
+    margin-top: -7rem;
+  }
+
+  .container > p {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container > h1 {
+    font-size: 2.7rem;
+    margin-top: -7rem;
+  }
+
+  .container > p {
+    margin-top: 1rem;
+  }
+}
