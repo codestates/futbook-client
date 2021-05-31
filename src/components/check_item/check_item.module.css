@@ -1,0 +1,82 @@
+.item {
+  display: flex;
+  position: relative;
+  margin: 20px 10rem;
+  padding: 20px;
+}
+
+.item:hover {
+  border-radius: 10px;
+  transform: scale(1.02);
+  transition: all 0.2s linear;
+}
+
+.image {
+  height: 200px;
+  width: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 20px;
+}
+
+.info_top {
+  width: 40vw;
+}
+
+.date {
+  font-size: 1.1rem;
+}
+.title {
+  margin-top: 1.1rem;
+}
+
+.address {
+  font-size: 0.9rem;
+}
+
+.price {
+  font-size: 1.1rem;
+  margin-top: 1.3rem;
+}
+
+.label {
+  width: 37px;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #1f98f4;
+  border-radius: 2px;
+  margin-bottom: 3px;
+}
+
+.inside {
+  background-color: #f20a0a;
+}
+.cancel {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+}
+
+.cancel_btn {
+  padding: 10px 22px;
+  font-size: 1rem;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid red;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.cancel_btn:hover {
+  transition: all 0.3s ease-out;
+  color: #fff;
+  background: red;
+}

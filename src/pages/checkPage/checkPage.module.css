@@ -1,0 +1,11 @@
+.title {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.msg {
+  font-size: 2rem;
+  color: red;
+  text-align: center;
+  margin: 8rem 0;
+}
