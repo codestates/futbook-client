@@ -5,7 +5,7 @@ const VideoSection = ({ accessToken, openNoAccessModal }) => {
   return (
     <div className={styles.container}>
       <video src="/videos/free_football_video.mp4" autoPlay loop muted />
-      <h1>풋살장 예약은 풋북.cf</h1>
+      <h1>풋살장 예약은 풋북.com</h1>
       <p>더이상 기다리지 마세요!</p>
       <div className={styles.btns}>
         {accessToken ? (
